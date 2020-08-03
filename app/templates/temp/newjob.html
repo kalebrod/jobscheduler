@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+{% block content %}
+    <h1>New job</h1>
+    <form action="{{url_for('main.newjob')}}" method="POST">
+        Task Name <input type="text" name="name">
+        Task <input type="text" name="task">
+        Start <input type="datetime-local" name="start">
+        <input type="submit" value="Create!">
+    </form>
+{% endblock %}
