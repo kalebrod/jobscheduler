@@ -1,1 +1,33 @@
-[Errno 2] No such file or directory: 'python /Users/kalebrodrigues/Documents/projects/dummy.py': 'python /Users/kalebrodrigues/Documents/projects/dummy.py'
+[Errno 2] No such file or directory: 'python /Users/kalebrodrigues/Documents/projects/dummy.py': 'python /Users/kalebrodrigues/Documents/projects/dummy.py'36 - Test: b'  File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4\n'
+36 - Test: b"    logging.debug('Im working')dd\n"
+36 - Test: b'                                ^\n'
+36 - Test: b'SyntaxError: invalid syntax\n'
+37 - Test: b'  File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4\n'
+37 - Test: b"    logging.debug('Im working')dd\n"
+37 - Test: b'                                ^\n'
+37 - Test: b'SyntaxError: invalid syntax\n'
+38 - Test: b'  File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4\n'
+38 - Test: b"    logging.debug('Im working')dd\n"
+38 - Test: b'                                ^\n'
+38 - Test: b'SyntaxError: invalid syntax\n'
+
+38 - Test: b'  File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4\n'
+38 - Test: b"    logging.debug('Im working')dd\n"
+38 - Test: b'                                ^\n'
+38 - Test: b'SyntaxError: invalid syntax\n'
+
+
+39 - Test: b'  File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4\n'
+39 - Test: b"    logging.debug('Im working')dd\n"
+39 - Test: b'                                ^\n'
+39 - Test: b'SyntaxError: invalid syntax\n'
+
+40 - Test: b'  File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4\n'
+40 - Test: b"    logging.debug('Im working')dd\n"
+40 - Test: b'                                ^\n'
+40 - Test: b'SyntaxError: invalid syntax\n'
+
+41 - Test: b'  File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4\n'
+41 - Test: b"    logging.debug('Im working')dd\n"
+41 - Test: b'                                ^\n'
+41 - Test: b'SyntaxError: invalid syntax\n'

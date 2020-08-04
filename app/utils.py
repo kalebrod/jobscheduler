@@ -1,46 +1,48 @@
-from subprocess import Popen,TimeoutExpired,PIPE
+import os
+import shlex
+from subprocess import Popen,PIPE
 from datetime import datetime,timedelta
 
 from .extensions import db,jobmanager
 from .models import Jobs
 
-reschedule = lambda time : time + timedelta(minutes=1)
+
+reschedule = lambda time : time + timedelta(minutes=3)
 
 def runjob(job,attemp=1):
-    print('Job %s starting ......' %job.name)
+    print('Job {} - {} starting.'.format(job.name,job.id))
 
-    PROC = Popen(['python',job.task], stdout=PIPE, stderr=PIPE,close_fds=True)
+    command = shlex.split(job.task)
+     
+    PROC = Popen(command, stdout=PIPE, stderr=PIPE,close_fds=True)
+    exitcode = PROC.wait()
 
-    try: 
-        outs,errs = PROC.communicate(timeout=1)
-    
-    except TimeoutExpired:
-        PROC.kill()
-        update_status(job.id,'Error')
-    
-    if errs:
+    if exitcode:
+        logger(job.id,job.name,PROC.stderr)
+
         if attemp > 2:
-            print('Error on Job %s. Attemp %s ,abandoning task ......' %(job.name,attemp))
+            print('Error on job {} - {}. Attemp {}, abandoning task.'.format(job.name,job.id,attemp))
             return update_status(job.id,'Error')
 
-        print('Error on Job %s. Attemp %s ,retrying ......' %(job.name,attemp))
-        newjob = update_status(job.id,'Retrying',reschedule(job.start))
+        print('Error on job {} - {}. Attemp {}, retrying.'.format(job.name,job.id,attemp))
+
+        finish_time = datetime.now().replace(second=0, microsecond=0)
+        newjob = update_status(job.id,'Retrying',reschedule(finish_time))
 
         return jobmanager.add_job(
             str(job.id),
             func=runjob,
             trigger='date',
-            run_date=reschedule(job.start),
+            run_date=reschedule(finish_time),
             args=[newjob,attemp+1]
         )
 
     update_status(job.id,'Success')
-
-    print('Job %s finished ......' %job.name)
+    print('Job {} - {} successfully finished.'.format(job.name,job.id))
 
 
 def update_status(jobid,status,time=False):
-    with jobmanager.app.app_context():
+    with jobmanager.app.app_context(): # Had to call app_context this way to work
         temp = Jobs.query.get(jobid)
         temp.status = status
 
@@ -50,3 +52,13 @@ def update_status(jobid,status,time=False):
         db.session.commit()
     
         return Jobs.query.get(jobid)
+
+def logger(id,name,pipe):
+    with open('app/logs/logs.txt','a+') as logger:
+        logger.write('\n')
+
+        for line in iter(pipe.readline, b''):
+            # print('{} - {}: {}'.format(id,name,str(line)))
+            logger.write('{} - {}: {}\n'.format(id,name,line))
+        
+        
