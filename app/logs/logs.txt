@@ -31,3 +31,57 @@
 41 - Test: b"    logging.debug('Im working')dd\n"
 41 - Test: b'                                ^\n'
 41 - Test: b'SyntaxError: invalid syntax\n'
+
+2 - Test:   File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4
+    logging.debug('Im working')dd
+                                ^
+SyntaxError: invalid syntax
+
+
+3 - Test:   File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4
+    logging.debug('Im working')dd
+                                ^
+SyntaxError: invalid syntax
+
+
+1 - Test:   File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4
+    logging.debug('Im working')dd
+                                ^
+SyntaxError: invalid syntax
+
+
+2 - Test:   File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4
+    logging.debug('Im working')dd
+                                ^
+SyntaxError: invalid syntax
+
+
+1 - Test:   File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4
+    logging.debug('Im working')dd
+                                ^
+SyntaxError: invalid syntax
+
+
+3 - Test:   File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4
+    logging.debug('Im working')dd
+                                ^
+SyntaxError: invalid syntax
+
+
+1 - Test:   File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4
+    logging.debug('Im working')dd
+                                ^
+SyntaxError: invalid syntax
+
+
+2 - Test:   File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4
+    logging.debug('Im working')dd
+                                ^
+SyntaxError: invalid syntax
+
+
+3 - Test:   File "/Users/kalebrodrigues/Documents/projects/dummy.py", line 4
+    logging.debug('Im working')dd
+                                ^
+SyntaxError: invalid syntax
+

@@ -5,6 +5,31 @@
         Task Name <input type="text" name="name">
         Task <input type="text" name="task">
         Start <input type="datetime-local" name="start">
+        Trigger <input list="triggers" name="trigger" id="trigger">
+        <datalist id="triggers">
+          <option value="date">
+          <option value="interval">
+        </datalist>
+        <div id='hidden' hidden>
+            Minutes <input type="text" name="minutes" value="0">
+            Hours <input type="text" name="hours" value="0">
+            Days <input type="text" name="days" value="0">
+            Weeks <input type="text" name="weeks" value="0">
+        </div>
+
         <input type="submit" value="Create!">
     </form>
+
+    <script>
+        var node = document.getElementById('trigger');
+        var hidden = document.getElementById('hidden');
+
+        node.addEventListener("change",function(){
+            if(this.value == 'date'){
+                hidden.hidden = true;
+            }else{
+                hidden.hidden = false;
+            }
+        });
+    </script>
 {% endblock %}

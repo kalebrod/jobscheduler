@@ -1,10 +1,21 @@
 {% extends 'base.html'%}
 {% block content %}
     <h1>Hello World</h1>
-    {% for job in jobs %}
+
+    <h2>Pending</h2>
+
+    {% for job in pending %}
+        <p>{{ job.name }} - {{ job.task }} - {{ job.status }} - {{ job.start }}</p>
+        <p>This process is active: {{ job.active }}</p>
+    {% endfor %}
+    <br>
+
+    <h2>Done</h2>
+    {% for job in done %}
         <p>{{ job.name }} - {{ job.task }} - {{ job.status }} - {{ job.start }}</p>
     {% endfor %}
 
-    <a href="{{url_for('main.newjob')}}"> Create new job</a>
+    
+    <a href="{{url_for('main.newjob')}}"> Create new job!</a>
 
 {% endblock %}

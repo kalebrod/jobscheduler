@@ -7,6 +7,7 @@ class Jobs(db.Model):
     task = db.Column(db.String(30))
     status = db.Column(db.String(15))
     start = db.Column(db.DateTime,default=datetime.now())
+    active = db.Column(db.Boolean,default=False)
     # active = db.Column(db.String(20))
 
     def __repr__(self):
